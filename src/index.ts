@@ -3,6 +3,7 @@ import { DataSource } from 'typeorm'
 import { User } from './User.entity'
 import { Book } from './Book.entity'
 import { UserRoute } from './User.route'
+import { BookRoute } from './Book.route'
 import 'dotenv/config'
 export const fastify = Fastify({
 	logger: true
@@ -25,6 +26,9 @@ dataSource.initialize().catch((error) => {
 
 const userRoute = new UserRoute()
 userRoute.build()
+
+const bookRoute = new BookRoute()
+bookRoute.build()
 
 fastify.listen({ port: 3000 }, (error) => {
 	if (error !== null) {
