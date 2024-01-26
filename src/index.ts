@@ -1,14 +1,29 @@
 import Fastify from 'fastify'
-
+import { DataSource } from 'typeorm'
 const fastify = Fastify({
 	logger: true
 })
 
-fastify.get('/', async (request, reply) => {
-	await reply.type('application/json').code(200)
-	return { hello: 'world' }
+const dataSource: DataSource = new DataSource({
+	type: 'mongodb',
+	database: 'test',
+	synchronize: true,
+	logging: false,
+	entities: [],
+	migrations: [],
+	subscribers: []
+})
+dataSource.initialize().catch((error) => {
+	console.log(error)
 })
 
-fastify.listen({ port: 3000 }, (err, address) => {
-	if (err !== null) throw err
+fastify.get('/', async (_request, reply) => {
+	await reply.send({ hello: 'world' })
+})
+
+fastify.listen({ port: 3000 }, function (error, address) {
+	if (error !== null) {
+		fastify.log.error(error)
+		process.exit(1)
+	}
 })
