@@ -1,15 +1,17 @@
 import Fastify from 'fastify'
 import { DataSource } from 'typeorm'
+import { User } from './User.entity'
+import { Book } from './Book.entity'
 const fastify = Fastify({
 	logger: true
 })
 
 const dataSource: DataSource = new DataSource({
 	type: 'mongodb',
-	database: 'test',
+	database: 'Books-land',
 	synchronize: true,
 	logging: false,
-	entities: [],
+	entities: [User, Book],
 	migrations: [],
 	subscribers: []
 })
