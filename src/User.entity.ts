@@ -1,4 +1,5 @@
 import { Entity, type ObjectId, ObjectIdColumn, Column } from 'typeorm'
+import { type Book } from './Book.entity'
 
 @Entity()
 export class User {
@@ -10,4 +11,7 @@ export class User {
 
 	@Column()
 	lastName: string
+
+	@Column()
+	readBooks: Array<Book>
 }
