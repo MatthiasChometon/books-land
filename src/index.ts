@@ -1,16 +1,20 @@
 import Fastify from 'fastify'
 import { DataSource } from 'typeorm'
+import { User } from './User.entity'
+import { Book } from './Book.entity'
 import { UserRoute } from './User.route'
-export const fastify = Fastify({
+const fastify = Fastify({
 	logger: true
 })
 
 const dataSource: DataSource = new DataSource({
 	type: 'mongodb',
-	database: 'test',
+	host: 'localhost',
+	port: 27017,
+	database: 'books-land',
 	synchronize: true,
 	logging: false,
-	entities: [],
+	entities: [User, Book],
 	migrations: [],
 	subscribers: []
 })
