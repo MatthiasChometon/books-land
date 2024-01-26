@@ -1,12 +1,14 @@
-import express, { type Express } from 'express'
-import dotenv from 'dotenv'
+import Fastify from 'fastify'
 
-dotenv.config()
+const fastify = Fastify({
+	logger: true
+})
 
-const app: Express = express()
-const port = process.env.PORT
+fastify.get('/', async (request, reply) => {
+	await reply.type('application/json').code(200)
+	return { hello: 'world' }
+})
 
-app.listen(port, () => {
-	// eslint-disable-next-line no-console
-	console.log(`[server]: Server is running at http://localhost:${port}`)
+fastify.listen({ port: 3000 }, (err, address) => {
+	if (err !== null) throw err
 })
