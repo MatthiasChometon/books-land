@@ -1,8 +1,8 @@
-import { Entity, type ObjectId, ObjectIdColumn, Column } from 'typeorm'
+import { Entity, type ObjectId, ObjectIdColumn, Column, BaseEntity } from 'typeorm'
 import { type Book } from './Book.entity'
 
 @Entity()
-export class User {
+export class User extends BaseEntity {
 	@ObjectIdColumn()
 	id: ObjectId
 
