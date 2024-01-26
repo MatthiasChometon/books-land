@@ -5,8 +5,8 @@ module.exports = {
 	},
 	extends: [
 		'prettier',
-		'eslint:all',
-		'plugin:@typescript-eslint/all'
+		'eslint:recommended',
+		'plugin:@typescript-eslint/recommended'
 	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
