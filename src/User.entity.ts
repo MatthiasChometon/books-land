@@ -1,5 +1,5 @@
 import { Entity, type ObjectId, ObjectIdColumn, Column, BaseEntity } from 'typeorm'
-import { type Book } from './Book.entity'
+import { Book } from './Book.entity'
 
 @Entity()
 export class User extends BaseEntity {
@@ -12,6 +12,6 @@ export class User extends BaseEntity {
 	@Column()
 	lastName: string
 
-	@Column()
+	@Column((type) => Book)
 	readBooks: Array<Book>
 }
