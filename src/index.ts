@@ -3,15 +3,16 @@ import { DataSource } from 'typeorm'
 import { User } from './User.entity'
 import { Book } from './Book.entity'
 import { UserRoute } from './User.route'
+import 'dotenv/config'
 export const fastify = Fastify({
 	logger: true
 })
 
+const { DATABASE_PORT, DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_NAME } = process.env
+
 const dataSource: DataSource = new DataSource({
 	type: 'mongodb',
-	host: 'localhost',
-	port: 27017,
-	database: 'books-land',
+	url: `mongodb://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@localhost:${DATABASE_PORT}/${DATABASE_NAME}?authSource=admin`,
 	synchronize: true,
 	logging: false,
 	entities: [User, Book],
