@@ -52,7 +52,8 @@ module.exports = {
 				'@typescript-eslint/prefer-readonly-parameter-types': 'off',
 				'@typescript-eslint/no-magic-numbers': 'off',
 				'@typescript-eslint/explicit-member-accessibility': 'off',
-				'@typescript-eslint/parameter-properties': ['error', { 'prefer': 'parameter-property' }]
+				'@typescript-eslint/parameter-properties': ['error', { 'prefer': 'parameter-property' }],
+				'@typescript-eslint/unbound-method': 'off'
 			}
 		}
 	]
