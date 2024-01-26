@@ -8,7 +8,9 @@ const fastify = Fastify({
 
 const dataSource: DataSource = new DataSource({
 	type: 'mongodb',
-	database: 'Books-land',
+	host: 'localhost',
+	port: 27017,
+	database: 'books-land',
 	synchronize: true,
 	logging: false,
 	entities: [User, Book],
