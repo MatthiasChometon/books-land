@@ -23,10 +23,6 @@ dataSource.initialize().catch((error) => {
 	console.log(error)
 })
 
-fastify.get('/', async (_request, reply) => {
-	await reply.send({ hello: 'world' })
-})
-
 const userRoute = new UserRoute()
 userRoute.build()
 
