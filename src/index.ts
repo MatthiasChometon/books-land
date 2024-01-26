@@ -1,6 +1,7 @@
 import Fastify from 'fastify'
 import { DataSource } from 'typeorm'
-const fastify = Fastify({
+import { UserRoute } from './User.route'
+export const fastify = Fastify({
 	logger: true
 })
 
@@ -21,7 +22,10 @@ fastify.get('/', async (_request, reply) => {
 	await reply.send({ hello: 'world' })
 })
 
-fastify.listen({ port: 3000 }, function (error, address) {
+const userRoute = new UserRoute()
+userRoute.build()
+
+fastify.listen({ port: 3000 }, (error) => {
 	if (error !== null) {
 		fastify.log.error(error)
 		process.exit(1)
