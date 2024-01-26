@@ -3,7 +3,7 @@ import { DataSource } from 'typeorm'
 import { User } from './User.entity'
 import { Book } from './Book.entity'
 import { UserRoute } from './User.route'
-const fastify = Fastify({
+export const fastify = Fastify({
 	logger: true
 })
 
