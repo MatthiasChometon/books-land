@@ -3,6 +3,7 @@ import { DataSource } from 'typeorm'
 import { User } from './User.entity'
 import { Book } from './Book.entity'
 import { UserRoute } from './User.route'
+import { BookRoute } from './Book.route'
 export const fastify = Fastify({
 	logger: true
 })
@@ -28,6 +29,9 @@ fastify.get('/', async (_request, reply) => {
 
 const userRoute = new UserRoute()
 userRoute.build()
+
+const bookRoute = new BookRoute()
+bookRoute.build()
 
 fastify.listen({ port: 3000 }, (error) => {
 	if (error !== null) {
