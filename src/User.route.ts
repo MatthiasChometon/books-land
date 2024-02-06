@@ -29,12 +29,15 @@ export class UserRoute {
 		await reply.send({ user: 'updated' })
 	}
 
-	async create(request: FastifyRequest<{ Body: { dataToSave: User } }>, reply: FastifyReply): Promise<void> {
+	async create(
+		request: FastifyRequest<{ Body: { userToSave: Omit<User, 'id'> } }>,
+		reply: FastifyReply
+	): Promise<void> {
 		const {
-			body: { dataToSave }
+			body: { userToSave }
 		} = request
-		await userRepository.create(dataToSave)
-		await reply.send({ user: 'created' })
+		const user = await userRepository.create(userToSave)
+		await reply.send({ user })
 	}
 
 	async remove(request: FastifyRequest<{ Params: { id: string } }>, reply: FastifyReply): Promise<void> {

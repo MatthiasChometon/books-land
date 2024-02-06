@@ -13,8 +13,8 @@ class UserRepository {
 		await User.update({ id }, dataToSave)
 	}
 
-	async create(dataToSave: Omit<User, 'id'>): Promise<void> {
-		await User.create(dataToSave).save()
+	async create(dataToSave: Omit<User, 'id'>): Promise<User> {
+		return await User.create(dataToSave).save()
 	}
 
 	async remove(id: string): Promise<void> {
